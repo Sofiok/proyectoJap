@@ -130,40 +130,28 @@ let generarTabla = () => {
      var container = document.getElementsByClassName("container p-5")[0]
     // Borro el contenido del contenedor para reemplazarlo con la nueva informacion
     container.innerHTML= " "
-    // Crea un elemento <table> y un elemento <tbody>
-    var tabla = document.createElement("table");
-    var tblBody = document.createElement("tbody");
-    // Crea las celdas
+    let htmlContentToAppend = "";
     currentProductsArray.forEach(element => {
         if (((minCount == undefined) || (minCount != undefined && parseInt(element.cost) >= minCount)) &&
             ((maxCount == undefined) || (maxCount != undefined && parseInt(element.cost) <= maxCount))){
-        var hilera = document.createElement("tr");
-        var celda = document.createElement("td");
-        const img = new Image(200, 100); // width, height
-        img.src = element.imgSrc;
-
-        celda.appendChild(img);
-        hilera.appendChild(celda);
-        tblBody.appendChild(hilera);
-
-        createTd(element.name, hilera, tblBody)
-        createTd(element.description, hilera, tblBody)
-        createTd(`${element.currency} ${element.cost}`, hilera, tblBody)
+                htmlContentToAppend += `
+                <a href="product-info.html" class="list-group-item list-group-item-action">
+                    <div class="row">
+                        <div class="col-3">
+                            <img src="` + element.imgSrc + `" alt="` + element.description + `" class="img-thumbnail">
+                        </div>
+                        <div class="col">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h4 class="mb-1">`+ element.name +`</h4>
+                                <small class="text-muted">` + element.currency + `` + element.cost +`</small>
+                            </div>
+                            <p class="mb-1">` + element.description + `</p>
+                        </div>
+                    </div>
+                </a>
+                `
             }
     })
-    tabla.appendChild(tblBody);
-
-    container.appendChild(tabla);
-    // modifica el atributo "border" de la tabla y lo fija a "1";
-    tabla.setAttribute("border", "1");
-}
-
-let createTd = (text, hilera, tblBody) => {
-    var celda = document.createElement("td");
-    celda.classList.add("mystyle");
-    var textoCelda = document.createTextNode(text);
-    celda.appendChild(textoCelda);
-    hilera.appendChild(celda);
-    tblBody.appendChild(hilera);
+    container.innerHTML = htmlContentToAppend;
 
 }
