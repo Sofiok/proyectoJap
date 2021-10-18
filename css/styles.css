@@ -139,3 +139,25 @@ a.custom-card:hover {
 .checked {
   color: orange;
 }
+
+.tipo-envio {
+  margin: 1em;
+}
+
+.direccion-envio {
+  margin: 1em;
+}
+
+.input-envio {
+  margin-top: 0.5em;
+}
+
+.costos {
+ margin: 1em;
+}
+
+#subtotal, #envio, #total{
+text-align: end;
+
+}
+
