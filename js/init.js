@@ -42,11 +42,27 @@ var getJSONData = function(url){
 }
 function muestraEmail(){
   let login = localStorage.getItem('userName');
+  if (login) {
     document.getElementById("muestroUsuario").innerHTML += login
+  }  
 }
+
+function autorizacion(){
+  let login = localStorage.getItem('userName');
+  if (login === null && window.location.href.indexOf('index.html') == -1) {
+    window.location = 'index.html'
+  }
+}
+
+document.getElementById("logoutLink").addEventListener("click",()=>{
+  localStorage.removeItem('userName')
+  window.location = "index.html"
+})
+
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function(e){
+  autorizacion()
   muestraEmail()
 });
