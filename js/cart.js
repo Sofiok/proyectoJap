@@ -30,6 +30,7 @@ let getCart = async () => {
     <th>Cantidad</th>
     <th>Subtotal</th>
   </tr>`
+  //convierto lo que viene en dolares a pesos
     cart.forEach(element => {
         let cost = element.unitCost
         if (element.currency != 'UYU') {
