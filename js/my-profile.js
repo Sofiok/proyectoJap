@@ -4,7 +4,7 @@
 document.addEventListener("DOMContentLoaded", function (e) {
     mostrarDatos()
 });
-
+//funcion que guarda los datos del formulario en un objeto 
 let guardarDatos = ()=>{
     
     let profile = {
@@ -16,10 +16,11 @@ let guardarDatos = ()=>{
         phone: document.getElementById("phone").value
 
     }
+    //guardo los datos en el local storage
     console.log(profile)
     localStorage.setItem('profileData', JSON.stringify(profile))
 }
-
+// funcion que se fija que haya datos en el local storage y popula en el form
 let mostrarDatos = () =>{
     let profileData = localStorage.getItem('profileData')
     if(profileData){
