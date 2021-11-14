@@ -82,7 +82,23 @@ let renderCart = (cart) => {
 
 
 }
+let validar = (evt)=>{
+    if ($('#calle').val() == "") {
+        alert('Ingrese calle');
+        return false;
+    }
+    if($('#numeroDpuerta').val()==""){
+        alert('Ingrese numero');
+        return false
+    }
+    if($('#esquina').val()==""){
+        alert('Ingrese esquina');
+        return false
+    }
+    $('#exampleModal').modal('show')
+};
 
+//funcion que devuelve el valor del radio button seleccionado
 let valorSeleccionado = () => {
     let valor
     if (document.getElementById("envioRadios1").checked) {
@@ -95,6 +111,7 @@ let valorSeleccionado = () => {
     if (document.getElementById("envioRadios3").checked) {
         valor = document.getElementById("envioRadios3").value
     }
+    //convierto a numero a lo que me devuelva (valor)
     return Number(valor)
 }
 
@@ -112,6 +129,7 @@ $('#r12').on('click', function () {
     $('#collapseOne').collapse('hide')
 })
 
+//funcion para actulizar subtotal y total con porcentajes por envio seleccionado
 let actulizarTotales = (subtotal) => {
     document.getElementById("subtotal").innerHTML = subtotal
     let envio = subtotal * (valorSeleccionado() / 100)
@@ -121,7 +139,7 @@ let actulizarTotales = (subtotal) => {
 const items = document.getElementsByClassName('radio-envio')
 // A cada elemento de la lista...
 Array.from(items).forEach(item => {
-    // Le asigno un eventListener escuchando el evento change
+    // Le asigno un eventListener escuchando el evento click
     item.addEventListener("click", function (e) {
 
         let subtotal = Number(document.getElementById("subtotal").innerHTML)
