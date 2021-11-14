@@ -132,14 +132,14 @@ let generarTabla = () => {
     currentProductsArray.forEach(element => {
         if (((minCount == undefined) || (minCount != undefined && parseInt(element.cost) >= minCount)) &&
             ((maxCount == undefined) || (maxCount != undefined && parseInt(element.cost) <= maxCount))) {
-            htmlContentToAppend +=` 
+            htmlContentToAppend += ` 
             <div class="col-md-4">
-                <a href="product-info.html" class="card mb-4 shadow-sm custom-card">
+<a href="product-info.html" class="card mb-4 shadow-sm custom-card">
                     <img class="bd-placeholder-img card-img-top" src=` + element.imgSrc + `>
                     <h3 class="m-3">` + element.name + `</h3>
                     <div class="card-body">
                     <p class="card-text">` + element.description + `</p>
-                    <p class="card-text">`+ element.currency + `` + element.cost +`</p>
+                    <p class="card-text">` + element.currency + `` + element.cost + `</p>
                     </div>
                 </a>
             </div>`
