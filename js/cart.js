@@ -1,4 +1,5 @@
 var currentCart = []
+var total = 0
 
 
 
@@ -23,7 +24,6 @@ let getCart = async () => {
 };
 
 let renderCart = (cart) => {
-    let total = 0
     let htmlcontent = `<tr>
     <th></th>
     <th>Nombre</th>
@@ -70,12 +70,13 @@ let renderCart = (cart) => {
             e.target.parentElement.nextElementSibling.innerHTML = unitPrice * parseInt(e.target.value)
             // Busco todos los elementos de subtotal para calcular el total general
             let subtotals = document.getElementsByClassName('subtotal')
-            let total = 0
+            total = 0
             // Sumo cada elemento subtotal y lo asigno a la variable total para mostrarlo en el carrito
             Array.from(subtotals).forEach(subtotal => {
                 total += parseFloat(subtotal.innerText)
             })
             document.getElementById('total').innerText = total
+            actulizarTotales(total)
         })
     })
     actulizarTotales(total)
@@ -142,7 +143,6 @@ Array.from(items).forEach(item => {
     // Le asigno un eventListener escuchando el evento click
     item.addEventListener("click", function (e) {
 
-        let subtotal = Number(document.getElementById("subtotal").innerHTML)
-        actulizarTotales(subtotal)
+        actulizarTotales(total)
     })
 })
